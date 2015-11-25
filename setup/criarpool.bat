@@ -1,0 +1,1 @@
+"C:\Program Files\glassfish-4.1\glassfish\bin\"asadmin.bat add-resources D:\prova\Pessoa-Web\setup\glassfish-resources.xml
