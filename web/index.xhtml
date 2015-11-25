@@ -6,7 +6,13 @@
         <title>Sistema de Revendedores</title>
     </h:head>
     <h:body>
-        
+        <h:form>
+            <h:commandLink value="Manutenção de carros"
+                           action="#{controleCarro.listar()}"/>
+
+            <h:commandLink value="Mannutenção de Clientes"
+                           action="#{controleCliente.listar()}"/>            
+        </h:form>
     </h:body>
 </html>
 
