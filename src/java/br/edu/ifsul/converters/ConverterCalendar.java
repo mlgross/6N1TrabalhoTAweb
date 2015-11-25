@@ -20,9 +20,9 @@ public class ConverterCalendar implements Converter, Serializable{
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         try {
-            Calendar c = Calendar.getInstance();
-            c.setTime(sdf.parse(string));
-            return c;
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(sdf.parse(string));
+            return calendario;
         } catch (Exception e){
             return null;
         }
