@@ -3,6 +3,7 @@ package br.edu.ifsul.dao;
 import br.edu.ifsul.modelo.Cliente;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,6 +11,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author mlgross 
  */
+@Stateless
 public class ClienteDAO implements Serializable{
     
     @PersistenceContext(unitName = "Revenda-WebPU")

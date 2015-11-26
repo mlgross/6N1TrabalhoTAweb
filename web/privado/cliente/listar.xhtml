@@ -17,7 +17,7 @@
                     <p:commandButton value="Novo"
                                      action="#{controleCliente.novo()}"
                                      ajax="false"/>
-                    <p:outputLabel value="Listagem de estados"/>
+                    <p:outputLabel value="Manutenção de Clientes"/>
                 </f:facet>
 
                 <p:column headerText="CPF">
@@ -38,10 +38,10 @@
 
                 <p:column headerText="Ações">
                     <p:commandButton icon="ui-icon-pencil"
-                                     action="#{controleCliente.editar(obj.id)}"
+                                     action="#{controleCliente.editar(obj.cpf)}"
                                      ajax="false"/>
                     <p:commandButton icon="ui-icon-trash"
-                                     action="#{controleCliente.excluir(obj.id)}"
+                                     action="#{controleCliente.excluir(obj.cpf)}"
                                      update="@form" process="@form"
                                      onclick="if (!confirm('Confirma a exclusão do objeto?'))
                                                  return false"/>
