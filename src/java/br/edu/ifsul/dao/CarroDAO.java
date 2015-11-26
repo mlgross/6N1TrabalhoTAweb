@@ -32,8 +32,8 @@ public class CarroDAO implements Serializable{
         em.remove(objeto);
     }
     
-    public Carro getObjectById(Integer id) throws Exception {
-        return em.find(Carro.class, id);
+    public Carro getObjectById(Integer renavan) throws Exception {
+        return em.find(Carro.class, renavan);
     }
 
     public EntityManager getEm() {
