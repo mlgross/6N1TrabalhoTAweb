@@ -16,7 +16,7 @@ public class ControleCliente implements Serializable{
     }
     
     public String listar() {
-        return "/privado/cidade/listar?faces-redirect=true";
+        return "/privado/cliente/listar?faces-redirect=true";
     }    
     
 }

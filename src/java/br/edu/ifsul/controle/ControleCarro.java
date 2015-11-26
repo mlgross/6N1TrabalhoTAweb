@@ -16,6 +16,6 @@ public class ControleCarro implements Serializable{
     }
     
     public String listar() {
-        return "/privado/cidade/listar?faces-redirect=true";
+        return "/privado/carro/listar?faces-redirect=true";
     }
 }

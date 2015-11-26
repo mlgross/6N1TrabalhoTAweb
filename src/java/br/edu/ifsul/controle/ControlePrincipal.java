@@ -14,7 +14,10 @@ public class ControlePrincipal implements Serializable{
 
     public ControlePrincipal() {
     }
-    
+    /**
+     * Preparar para login
+     * @return 
+     */
     public String home() {       
         return "/index?faces-redirect=true";
     }
