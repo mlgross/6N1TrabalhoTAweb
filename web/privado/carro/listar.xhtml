@@ -36,7 +36,9 @@
                     <p:outputLabel value="#{obj.descricao}"/>
                 </p:column>
                 <p:column headerText="multas">
-                    <p:outputLabel value="#{obj.multas}"/>
+                    <p:outputLabel value="#{obj.multas}">
+                        <f:convertNumber pattern="R$ 0.00"/>
+                    </p:outputLabel>        
                 </p:column>
                 <p:column headerText="Da revenda?">
                     <p:outputLabel value="#{obj.emposse}">

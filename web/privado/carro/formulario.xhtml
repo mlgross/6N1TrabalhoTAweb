@@ -1,12 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Edição de Carros</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <p:growl/>
+            <p:panelGrid columns="4">
+
+                <f:facet name="header">
+                    <p:outputLabel value="Edição de Carros"/>
+                </f:facet>
+
+                <p:outputLabel value="Renavan" for="txtrenavan"/>
+                <p:inputMask id="txtrenavan" size="10"
+                             mask="999999999" placeHolder="Obrigatório"
+                             value="#{controleCarro.objeto.renavan}"/>
+
+                <p:outputLabel value="Placa" for="txtplaca"/>
+                <p:inputMask id="txtplaca" size="10"
+                             mask="aaa-9999" placeHolder="Obrigatório"
+                             value="#{controleCarro.objeto.placa}"/>
+
+                <p:outputLabel value="Modelo" for="txtModelo"/>
+                <p:inputText value="#{controleCarro.objeto.modelo}"
+                             size="20" maxlength="20"
+                             id="txtModelo"
+                             placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Ano" for="txtAno"/>
+                <p:inputMask value="#{controleCarro.objeto.ano}"
+                             mask="9999"
+                             size="4" maxlength="4"
+                             id="txtAno" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Descrição" for="txtDescricao"/>
+                <p:inputText value="#{controleCarro.objeto.descricao}"
+                             size="50" maxlength="50"
+                             id="txtDescricao" />
+                
+                <p:outputLabel value="Multas" for="txtMultas"/>
+                <p:inputText value="#{controleCarro.objeto.multas}"
+                             size="14" maxlength="14"
+                             id="txtMultas" />
+                
+                <p:outputLabel value="Da revenda" for="btnEmposse"/>
+                <p:selectBooleanButton value="#{controleCarro.objeto.emposse}" id="btnEmposse"
+                                       onLabel="Sim" offLabel="Não" style="width: 60"/>                
+
+                <f:facet name="footer">
+                    <div align="center">
+                        <p:commandButton value="Cancelar"
+                                         action="#{controleCarro.cancelar()}"
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Salvar"
+                                         action="#{controleCarro.salvar()}"
+                                         ajax="false"/>
+                    </div>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
     </h:body>
 </html>
 

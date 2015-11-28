@@ -38,8 +38,8 @@
                              id="txtEndereco" placeholder="Obrigatório"/>
 
                 <p:outputLabel value="Telefone" for="txtTelefone"/>
-                <p:inputText value="#{controleCliente.objeto.telefone}"
-                             size="14" maxlength="14"
+                <p:inputMask value="#{controleCliente.objeto.telefone}"
+                             size="14" maxlength="14" mask="(99) 9999-9999"
                              id="txtTelefone" placeholder="Obrigatório"/>                
 
                 <f:facet name="footer">
