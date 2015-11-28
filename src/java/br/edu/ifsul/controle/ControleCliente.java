@@ -7,6 +7,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import br.edu.ifsul.converters.ConverterEmposse;
 
 /**
  *

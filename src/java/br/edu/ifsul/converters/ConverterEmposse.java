@@ -10,7 +10,7 @@ import javax.faces.convert.FacesConverter;
  *
  * @author mlgross
  */
-@FacesConverter(value = "converterEmpose")
+@FacesConverter(value = "converterEmposse")
 public class ConverterEmposse implements Converter, Serializable {
 
     @Override
