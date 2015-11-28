@@ -1,12 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Manutenção de Carros</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form> 
+            <p:growl/>
+            <p:dataTable value="#{controleCarro.dao.listarTodos}" var="obj"
+                         emptyMessage="Nenhum registro encontrado">
+
+                <f:facet name="header">
+                    <p:commandButton value="Novo"
+                                     action="#{controleCarro.novo()}"
+                                     ajax="false"/>
+                    <p:outputLabel value="Manutenção de Carros"/>
+                </f:facet>
+
+                <p:column headerText="renavan">
+                    <p:outputLabel value="#{obj.renavan}"/>
+                </p:column>
+                <p:column headerText="placa">
+                    <p:outputLabel value="#{obj.placa}"/>
+                </p:column>    
+                <p:column headerText="modelo">
+                    <p:outputLabel value="#{obj.modelo}"/>
+                </p:column>
+                <p:column headerText="ano">
+                    <p:outputLabel value="#{obj.ano}"/>
+                </p:column>
+                <p:column headerText="descricao">
+                    <p:outputLabel value="#{obj.descricao}"/>
+                </p:column>
+                <p:column headerText="multas">
+                    <p:outputLabel value="#{obj.multas}"/>
+                </p:column>
+                <p:column headerText="Da revenda?">
+                    <p:outputLabel value="#{obj.emposse}">
+                        <f:converter converterId="coverterEmposse"/>
+                    </p:outputLabel>                    
+                </p:column>                
+                
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-pencil"
+                                     action="#{controleCarro.editar(obj.renavan)}"
+                                     ajax="false"/>
+                    <p:commandButton icon="ui-icon-trash"
+                                     action="#{controleCarro.excluir(obj.renavan)}"
+                                     update="@form" process="@form"
+                                     onclick="if (!confirm('Confirma a exclusão do objeto?'))
+                                                 return false"/>
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:outputLabel value="Total de registros: #{controleCarro.dao.listarTodos.size()}"/>
+                </f:facet>
+
+            </p:dataTable>
+        </h:form>
     </h:body>
 </html>
 

@@ -11,32 +11,32 @@
         <h:form>
             <p:growl/>
             <p:panelGrid columns="4">
-                
+
                 <f:facet name="header">
                     <p:outputLabel value="Edição de Clientes"/>
                 </f:facet>
 
                 <p:outputLabel value="CPF" for="txtcpf"/>
-                <p:inputText value="#{controleCliente.objeto.cpf}"
-                             size="14" maxlength="14"
-                             id="txtcpf" placeholder="Obrigatório"/>
-                
+                <p:inputMask id="txtcpf" size="14"
+                             mask="999.999.999-99" 
+                             value="#{controleCliente.objeto.cpf}"/>
+
                 <p:outputLabel value="RG" for="txtrg"/>
-                <p:inputText value="#{controleCliente.objeto.rg}"
-                             size="10" maxlength="10"
-                             id="txtrg" placeholder="Obrigatório"/>                
-                
+                <p:inputMask id="txtrg" size="10"
+                             mask="9999999999" placeHolder="Obrigatório"
+                             value="#{controleCliente.objeto.rg}"/>             
+
                 <p:outputLabel value="Nome" for="txtNome"/>
                 <p:inputText value="#{controleCliente.objeto.nome}"
                              size="50" maxlength="50"
                              id="txtNome"
                              placeholder="Obrigatório"/>
-                
+
                 <p:outputLabel value="Endereço" for="txtEndereco"/>
                 <p:inputText value="#{controleCliente.objeto.endereco}"
                              size="50" maxlength="50"
                              id="txtEndereco" placeholder="Obrigatório"/>
-                
+
                 <p:outputLabel value="Telefone" for="txtTelefone"/>
                 <p:inputText value="#{controleCliente.objeto.telefone}"
                              size="14" maxlength="14"
