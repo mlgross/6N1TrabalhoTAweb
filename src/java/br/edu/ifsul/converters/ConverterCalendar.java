@@ -12,7 +12,7 @@ import javax.faces.convert.FacesConverter;
  *
  * @author mlgross 
  */
-@FacesConverter(value = "ConverterCalendar")
+@FacesConverter(value = "converterCalendar")
 public class ConverterCalendar implements Converter, Serializable{
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
