@@ -1,12 +1,68 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Edição de Reparadores</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <p:growl/>
+            <p:panelGrid columns="4">
+
+                <f:facet name="header">
+                    <p:outputLabel value="Edição de Reparadores"/>
+                </f:facet>
+
+                <p:outputLabel value="PIS" for="txtpis"/>
+                <p:inputMask id="txtpis" size="10"
+                             mask="999999999" 
+                             value="#{controleReparador.objeto.pis}"/>
+
+                <p:outputLabel value="Nome" for="txtnome"/>
+                <p:inputText id="txtnome" size="50" maxlength="50"
+                             value="#{controleReparador.objeto.nome}"/>
+
+                <p:outputLabel value="Data de Admissão" for="txtdata"/>
+                <p:inputMask value="#{controleReparador.objeto.dataadm}"
+                             mask="99/99/9999" id="txtdata">
+                    <f:converter converterId="converterCalendar"/>
+                </p:inputMask>
+
+                <p:outputLabel value="Endereço" for="txtEndereco"/>
+                <p:inputText value="#{controleReparador.objeto.endereco}"
+                             size="50" maxlength="50" id="txtEndereco" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Salário" for="txtSalario"/>
+                <p:inputText value="#{controleReparador.objeto.salario}"
+                             size="10" maxlength="10"
+                             id="txtSalario" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Ativo?" for="btnAtivo"/>
+                <p:selectBooleanButton value="#{controleReparador.objeto.ativo}" id="btnAtivo"
+                                       onLabel="Contratado" offLabel="Demitido" style="width: 200"/>                
+
+                <p:outputLabel value="Especialidade" for="txtEspecialidade"/>
+                <p:inputText value="#{controleReparador.objeto.especialidade}"
+                             size="30" maxlength="50" placeholder="Obrigatório"
+                             id="txtEspecialidade" />
+                
+                <f:facet name="footer">
+                    <div align="center">
+                        <p:commandButton value="Cancelar"
+                                         action="#{controleReparador.cancelar()}"
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Salvar"
+                                         action="#{controleReparador.salvar()}"
+                                         ajax="false"/>
+                    </div>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
     </h:body>
 </html>
 
