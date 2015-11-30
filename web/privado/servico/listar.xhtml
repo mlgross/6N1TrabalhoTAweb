@@ -20,45 +20,36 @@
                     <p:outputLabel value="Manutenção de Serviços"/>
                 </f:facet>
 <!-- Despejar atributos !-->
-                <p:column headerText="numero">
-                    <p:outputLabel value="#{obj}"/>
+                <p:column headerText="Número">
+                    <p:outputLabel value="#{obj.numero}"/>
                 </p:column>
-                <p:column headerText="Nome">
+                <p:column headerText="Custo">
                     <p:outputLabel value="#{obj.nome}"/>
                 </p:column>
-                <p:column headerText="Data de Admissão">
-                    <p:outputLabel value="#{obj.dataadm}">
-                        <f:converter converterId="converterCalendar"/>
-                    </p:outputLabel>
+                <p:column headerText="Insumos">
+                    <p:outputLabel value="#{obj.insumos}"/>
                 </p:column>
-                <p:column headerText="Endereço">
-                    <p:outputLabel value="#{obj.endereco}"/>
+                <p:column headerText="Descrição">
+                    <p:outputLabel value="#{obj.descricao}"/>
                 </p:column>
-                <p:column headerText="Salário">
-                    <p:outputLabel value="#{obj.salario}"/>
+                <p:column headerText="Duração">
+                    <p:outputLabel value="#{obj.duracao}"/>
                 </p:column>
-                <p:column headerText="Ativo?">
-                    <p:outputLabel value="#{obj.ativo}">
-                        <f:converter converterId="converterAtivo"/>
-                    </p:outputLabel>
-                </p:column>
-                <p:column headerText="Especialidade">
-                    <p:outputLabel value="#{obj.especialidade}"/>
-                </p:column>
+
 <!--botões !-->
                 <p:column headerText="Ações">
                     <p:commandButton icon="ui-icon-pencil"
-                                     action="#{controleServico.editar(obj.pis)}"
+                                     action="#{controleServico.editar(obj.numero)}"
                                      ajax="false"/>
                     <p:commandButton icon="ui-icon-trash"
-                                     action="#{controleServico.excluir(obj.pis)}"
+                                     action="#{controleServico.excluir(obj.numero)}"
                                      update="@form" process="@form"
                                      onclick="if (!confirm('Confirma a exclusão do objeto?'))
                                                  return false"/>
                 </p:column>
 
                 <f:facet name="footer">
-                    <p:outputLabel value="Total de registros: #{controleReparador.dao.listarTodos.size()}"/>
+                    <p:outputLabel value="Total de registros: #{controleServico.dao.listarTodos.size()}"/>
                 </f:facet>
 
             </p:dataTable>
