@@ -19,7 +19,7 @@
                                      ajax="false"/>
                     <p:outputLabel value="Manutenção de Serviços"/>
                 </f:facet>
-<!-- Despejar atributos !-->
+
                 <p:column headerText="Número">
                     <p:outputLabel value="#{obj.numero}"/>
                 </p:column>
@@ -35,8 +35,13 @@
                 <p:column headerText="Duração">
                     <p:outputLabel value="#{obj.duracao}"/>
                 </p:column>
+                <p:column headerText="Carro">
+                    <p:outputLabel value="#{obj.carro.placa}"/>
+                </p:column>
+                <p:column headerText="Reparador">
+                    <p:outputLabel value="#{obj.reparador.nome}"/>
+                </p:column>
 
-<!--botões !-->
                 <p:column headerText="Ações">
                     <p:commandButton icon="ui-icon-pencil"
                                      action="#{controleServico.editar(obj.numero)}"

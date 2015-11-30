@@ -3,6 +3,8 @@ package br.edu.ifsul.controle;
 import br.edu.ifsul.dao.CarroDAO;
 import br.edu.ifsul.dao.ReparadorDAO;
 import br.edu.ifsul.dao.ServicoDAO;
+import br.edu.ifsul.modelo.Carro;
+import br.edu.ifsul.modelo.Reparador;
 import br.edu.ifsul.modelo.Servico;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
@@ -23,8 +25,10 @@ public class ControleServico implements Serializable {
     private Servico objeto;
     @EJB
     private ReparadorDAO daoReparador;
+    private Reparador reparador;
     @EJB
     private CarroDAO daoCarro;
+    private Carro carro;
 
     public ControleServico() {
     }
@@ -98,6 +102,22 @@ public class ControleServico implements Serializable {
 
     public void setDaoCarro(CarroDAO daoCarro) {
         this.daoCarro = daoCarro;
+    }
+
+    public Reparador getReparador() {
+        return reparador;
+    }
+
+    public void setReparador(Reparador reparador) {
+        this.reparador = reparador;
+    }
+
+    public Carro getCarro() {
+        return carro;
+    }
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
     }
 
 }
