@@ -1,6 +1,6 @@
 package br.edu.ifsul.dao;
 
-import br.edu.ifsul.modelo.Reparador;
+import br.edu.ifsul.modelo.Negociador;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -16,26 +16,26 @@ public class NegociadorDAO implements Serializable {
 
     @PersistenceContext(unitName = "Revenda-WebPU")
     private EntityManager em;
-    private List<Reparador> listarTodos;
+    private List<Negociador> listarTodos;
 
     public NegociadorDAO() {
     }
 
-    public void persist(Reparador objeto) throws Exception {
+    public void persist(Negociador objeto) throws Exception {
         em.persist(objeto);
     }
 
-    public void merge(Reparador objeto) throws Exception {
+    public void merge(Negociador objeto) throws Exception {
         em.merge(objeto);
     }
 
-    public void remove(Reparador objeto) throws Exception {
+    public void remove(Negociador objeto) throws Exception {
         objeto = em.merge(objeto);
         em.remove(objeto);
     }
 
-    public Reparador getObjectById(Integer pis) throws Exception {
-        return em.find(Reparador.class, pis);
+    public Negociador getObjectById(Integer pis) throws Exception {
+        return em.find(Negociador.class, pis);
     }
 
     public EntityManager getEm() {
@@ -46,11 +46,11 @@ public class NegociadorDAO implements Serializable {
         this.em = em;
     }
 
-    public List<Reparador> getListarTodos() {
+    public List<Negociador> getListarTodos() {
         return em.createQuery("from Negociador order by pis").getResultList();
     }
 
-    public void setListarTodos(List<Reparador> listarTodos) {
+    public void setListarTodos(List<Negociador> listarTodos) {
         this.listarTodos = listarTodos;
     }
 }
