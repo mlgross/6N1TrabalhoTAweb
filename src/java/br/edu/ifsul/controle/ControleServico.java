@@ -37,8 +37,9 @@ public class ControleServico implements Serializable {
         return "/privado/servico/listar?faces-redirect=true";
     }
 
-    public void novo() {
-        objeto = new Servico();        
+    public String novo() {
+        objeto = new Servico();
+        return "formulario";        
     }
 
     public void salvar() {

@@ -1,12 +1,75 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Edição de Serviços</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <p:growl/>
+            <p:panelGrid columns="4">
+
+                <f:facet name="header">
+                    <p:outputLabel value="Edição de Reparadores"/>
+                </f:facet>
+
+                <p:outputLabel value="Número" for="txtNumero"/>
+                <p:inputText id="txtNumero" size="10" readonly="true" 
+                             value="#{controleServico.objeto.numero}"/>
+
+                <p:outputLabel value="Custo" for="txtCusto"/>
+                <p:inputText id="txtCusto" size="10" maxlength="10"
+                             value="#{controleServico.objeto.custo}"/>
+
+                <p:outputLabel value="Insumos" for="txtInsumos"/>
+                <p:inputText value="#{controleServico.objeto.insumos}"
+                             id="txtInsumos" size="50" maxlength="50" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Descrição" for="txtDescricao"/>
+                <p:inputText value="#{controleServico.objeto.descricao}"
+                             size="50" maxlength="50" id="txtDescricao" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Horas de duração" for="txtDuracao"/>
+                <p:inputText value="#{controleServico.objeto.duracao}"
+                             size="10" maxlength="10" id="txtDuracao" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Carro" for="selectCarro"/>
+                <p:selectOneMenu value="#{controleServico.objeto.carro.placa}"
+                                 id="selectCarro">
+                    <f:converter converterId="converterCarro"/>
+                    <f:selectItem noSelectionOption="true"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleServico.daoCarro.listarTodos}"
+                                   var="carro" itemLabel="#{carro.placa}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Reparador" for="selectReparador"/>
+                <p:selectOneMenu value="#{controleServico.objeto.reparador.nome}"
+                                 id="selectReparador">
+                    <f:converter converterId="converterReparador"/>
+                    <f:selectItem noSelectionOption="true"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleServico.daoReparador.listarTodos}"
+                                   var="reparador" itemLabel="#{reparador.nome}"/>
+                </p:selectOneMenu>                
+                
+                <f:facet name="footer">
+                    <div align="center">
+                        <p:commandButton value="Cancelar"
+                                         action="#{controleServico.cancelar()}"
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Salvar"
+                                         action="#{controleServico.salvar()}"
+                                         ajax="false"/>
+                    </div>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
     </h:body>
 </html>
 
