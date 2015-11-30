@@ -12,15 +12,15 @@ import javax.persistence.PersistenceContext;
  * @author mlgross
  */
 @Stateless
-public class ServicoDAO implements Serializable{
-    
+public class ServicoDAO implements Serializable {
+
     @PersistenceContext(unitName = "Revenda-WebPU")
     private EntityManager em;
-    private List<ServicoDAO> listarTodos;
+    private List<Servico> listarTodos;
 
     public ServicoDAO() {
     }
- 
+
     public void persist(Servico objeto) throws Exception {
         em.persist(objeto);
     }
@@ -46,12 +46,12 @@ public class ServicoDAO implements Serializable{
         this.em = em;
     }
 
-    public List<ServicoDAO> getListarTodos() {
-        return listarTodos;
+    public List<Servico> getListarTodos() {
+        return em.createQuery("from Servico order by numero").getResultList();
     }
 
-    public void setListarTodos(List<ServicoDAO> listarTodos) {
+    public void setListarTodos(List<Servico> listarTodos) {
         this.listarTodos = listarTodos;
     }
-    
+
 }
