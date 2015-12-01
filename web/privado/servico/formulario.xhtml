@@ -37,20 +37,20 @@
                              size="10" maxlength="10" id="txtDuracao" placeholder="Obrigatório"/>
 
                 <p:outputLabel value="Carro" for="selectCarro"/>
-                <p:selectOneMenu value="#{controleServico.objeto.carro.placa}"
+                <p:selectOneMenu value="#{controleServico.objeto.carro}"
                                  id="selectCarro">
                     <f:converter converterId="converterCarro"/>
-                    <f:selectItem noSelectionOption="true"
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
                                   itemLabel="Selecione um registro"/>
                     <f:selectItems value="#{controleServico.daoCarro.listarTodos}"
-                                   var="carro" itemLabel="#{carro.placa}"/>
+                                   var="car" itemLabel="#{car.placa}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Reparador" for="selectReparador"/>
-                <p:selectOneMenu value="#{controleServico.objeto.reparador.nome}"
+                <p:selectOneMenu value="#{controleServico.objeto.reparador}"
                                  id="selectReparador">
                     <f:converter converterId="converterReparador"/>
-                    <f:selectItem noSelectionOption="true"
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
                                   itemLabel="Selecione um registro"/>
                     <f:selectItems value="#{controleServico.daoReparador.listarTodos}"
                                    var="reparador" itemLabel="#{reparador.nome}"/>

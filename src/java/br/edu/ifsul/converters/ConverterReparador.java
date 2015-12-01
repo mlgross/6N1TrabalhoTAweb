@@ -30,7 +30,7 @@ public class ConverterReparador implements Converter, Serializable {
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
         if (o == null) {
-            return null;
+            return "";
         }
         Reparador obj = (Reparador) o;
         return obj.getPis().toString();  

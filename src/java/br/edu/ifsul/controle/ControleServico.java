@@ -39,37 +39,46 @@ public class ControleServico implements Serializable {
 
     public String novo() {
         objeto = new Servico();
-        return "formulario";        
+        return "formulario";
     }
 
-    public void salvar() {
+    public String cancelar() {
+        objeto = null;
+        return "listar";
+    }
+
+    public String salvar() {
         try {
-            if (objeto.getNumero()== null) {
+            if (objeto.getNumero() == null) {
                 dao.persist(objeto);
             } else {
                 dao.merge(objeto);
             }
-            Util.mensagemInformacao("Objeto persistido com sucesso");            
+            Util.mensagemInformacao("Objeto persistido com sucesso");
+            return "listar";
         } catch (Exception e) {
-            Util.mensagemErro("Erro ao persistir objeto: " + e.getMessage());            
+            Util.mensagemErro("Erro ao persistir objeto: " + e.getMessage());
+            return "formulario";
         }
     }
 
-    public void editar(Integer numero) {
+    public String editar(Integer numero) {
         try {
-            objeto = dao.getObjectById(numero);            
+            objeto = dao.getObjectById(numero);
+            return "formulario";
         } catch (Exception e) {
-            Util.mensagemErro("Erro ao recuperar objeto: "+e.getMessage());            
+            Util.mensagemErro("Erro ao recuperar objeto: " + e.getMessage());
+            return "listar";
         }
     }
-    
-    public void excluir(Integer numero){
+
+    public void excluir(Integer numero) {
         try {
             objeto = dao.getObjectById(numero);
             dao.remove(objeto);
             Util.mensagemInformacao("Objeto removido com sucesso");
-        } catch (Exception e){
-            Util.mensagemErro("Erro ao remover objeto:"+Util.getMensagemErro(e));
+        } catch (Exception e) {
+            Util.mensagemErro("Erro ao remover objeto:" + Util.getMensagemErro(e));
         }
     }
 
