@@ -51,6 +51,10 @@ public class ReparadorDAO implements Serializable{
         return em.createQuery("from Reparador order by pis").getResultList();
     }
 
+    public List<Reparador> getListarTodosAtivos() {
+        return em.createQuery("from Reparador where ativo=TRUE order by pis").getResultList();
+    }
+    
     public void setListarTodos(List<Reparador> listarTodos) {
         this.listarTodos = listarTodos;
     }

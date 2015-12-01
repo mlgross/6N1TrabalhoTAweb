@@ -47,12 +47,12 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Reparador" for="selectReparador"/>
-                <p:selectOneMenu value="#{controleServico.objeto.reparador}"
+                <p:selectOneMenu value="#{controleServico.objeto.reparador}" 
                                  id="selectReparador">
                     <f:converter converterId="converterReparador"/>
                     <f:selectItem noSelectionOption="true" itemValue="#{null}"
                                   itemLabel="Selecione um registro"/>
-                    <f:selectItems value="#{controleServico.daoReparador.listarTodos}"
+                    <f:selectItems value="#{controleServico.daoReparador.listarTodosAtivos}" 
                                    var="reparador" itemLabel="#{reparador.nome}"/>
                 </p:selectOneMenu>                
                 
