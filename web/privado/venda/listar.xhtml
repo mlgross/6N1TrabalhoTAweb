@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Manutenção de Vendas</title>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:growl/>
+            <p:dataTable value="#{controleVenda.dao.listarTodos}" var="obj"
+                         emptyMessage="Nenhum registro encontrado">
+
+                <f:facet name="header">
+                    <p:commandButton value="Novo"
+                                     action="#{controleVenda.novo()}"
+                                     ajax="false"/>
+                    <p:outputLabel value="Manutenção de Vendas"/>
+                </f:facet>
+
+                <p:column headerText="Nota Fiscal">
+                    <p:outputLabel value="#{obj.nf}"/>
+                </p:column>
+                <p:column headerText="Data da Venda">
+                    <p:outputLabel value="#{obj.dataven}">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:outputLabel>
+                </p:column>
+                <p:column headerText="Banco">
+                    <p:outputLabel value="#{obj.banco}"/>
+                </p:column>
+                <p:column headerText="Valor da Venda">
+                    <p:outputLabel value="#{obj.valorven}">
+                        <f:convertNumber pattern="R$ 0.00" />
+                    </p:outputLabel>
+                </p:column>
+                <p:column headerText="Custo de Despachantes">
+                    <p:outputLabel value="#{obj.custodesp}">
+                        <f:convertNumber pattern="R$ 0.00" />
+                    </p:outputLabel>
+                </p:column>
+
+                <p:column headerText="Negociador">
+                    <p:outputLabel value="#{obj.negociador.nome}"/>
+                </p:column>
+                <p:column headerText="Carro">
+                    <p:outputLabel value="#{obj.carro.placa}"/>
+                </p:column>                
+                <p:column headerText="Cliente">
+                    <p:outputLabel value="#{obj.cliente.nome}"/>
+                </p:column>
+                
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-pencil"
+                                     action="#{controleVenda.editar(obj.nf)}"
+                                     ajax="false"/>
+                    <p:commandButton icon="ui-icon-trash"
+                                     action="#{controleVenda.excluir(obj.nf)}"
+                                     update="@form" process="@form"
+                                     onclick="if (!confirm('Confirma a exclusão do objeto?'))
+                                                 return false"/>
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:outputLabel value="Total de registros: #{controleVenda.dao.listarTodos.size()}"/>
+                </f:facet>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

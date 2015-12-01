@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edição de Vendas</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl/>
+            <p:panelGrid columns="4">
+
+                <f:facet name="header">
+                    <p:outputLabel value="Edição de Vendas"/>
+                </f:facet>
+
+                <p:outputLabel value="Nota Fiscal" for="txtNF"/>
+                <p:inputText id="txtNF" size="10" maxlength="9" readonly="true" 
+                             value="#{controleVenda.objeto.nf}"/>
+
+                <p:outputLabel value="Data da Venda" for="txtDataVenda"/>
+                <p:inputMask id="txtDataVenda" mask="99/99/9999"
+                             value="#{controleVenda.objeto.dataven}">
+                    <f:converter converterId="converterCalendar"/>
+                </p:inputMask>
+
+                <p:outputLabel value="Banco" for="txtBanco"/>
+                <p:inputText value="#{controleVenda.objeto.banco}" 
+                             id="txtBanco" size="30" maxlength="30" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Valor da Venda" for="txtValorVenda"/>
+                <p:inputText value="#{controleVenda.objeto.valorven}" 
+                             id="txtValorVenda" size="10" maxlength="10" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Custo de Despachante" for="txtCustoDesp"/>
+                <p:inputText value="#{controleVenda.objeto.custodesp}" 
+                             id="txtCustoDesp" size="10" maxlength="10" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Negociador" for="selectNegociador"/>
+                <p:selectOneMenu value="#{controleVenda.objeto.negociador}"
+                                 id="selectNegociador">
+                    <f:converter converterId="converterNegociador"/>
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleVenda.daoNegociador.listarTodos}"
+                                   var="neg" itemLabel="#{neg.nome}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Carro" for="selectCarro"/>
+                <p:selectOneMenu value="#{controleVenda.objeto.carro}"
+                                 id="selectCarro">
+                    <f:converter converterId="converterCarro"/>
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleVenda.daoCarro.listarTodosVendiveis}"
+                                   var="car" itemLabel="#{car.placa}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Cliente" for="selectCliente"/>
+                <p:selectOneMenu value="#{controleVenda.objeto.cliente}" 
+                                 id="selectCliente">
+                    <f:converter converterId="converterCliente"/>
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleVenda.daoCliente.listarTodos}" 
+                                   var="cli" itemLabel="#{cli.nome}"/>
+                </p:selectOneMenu>                
+
+                <f:facet name="footer">
+                    <div align="center">
+                        <p:commandButton value="Cancelar"
+                                         action="#{controleVenda.cancelar()}"
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Salvar"
+                                         action="#{controleVenda.salvar()}"
+                                         ajax="false"/>
+                    </div>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
