@@ -49,7 +49,15 @@ public class CarroDAO implements Serializable{
     public List<Carro> getListarTodos() {
         return em.createQuery("from Carro order by renavan").getResultList();
     }
+    
+    public List<Carro> getListarTodosCompraveis() {
+        return em.createQuery("from Carro where emposse=FALSE order by renavan").getResultList();
+    }    
 
+     public List<Carro> getListarTodosVendiveis() {
+        return em.createQuery("from Carro where emposse=TRUE order by renavan").getResultList();
+    }    
+    
     public void setListarTodos(List<Carro> listarTodos) {
         this.listarTodos = listarTodos;
     }

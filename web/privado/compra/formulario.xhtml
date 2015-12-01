@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edição de Compras</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl/>
+            <p:panelGrid columns="4">
+
+                <f:facet name="header">
+                    <p:outputLabel value="Edição de Compras"/>
+                </f:facet>
+
+                <p:outputLabel value="CRV" for="txtCrv"/>
+                <p:inputText id="txtCrv" size="10" readonly="true" 
+                             value="#{controleCompra.objeto.crv}"/>
+
+                <p:outputLabel value="Data da Compra" for="txtDataCompra"/>
+                <p:inputMask id="txtDataCompra" mask="99/99/9999"
+                             value="#{controleCompra.objeto.datacompra}"/>
+
+                <p:outputLabel value="Valor FIPE" for="txtValorFipe"/>
+                <p:inputText value="#{controleCompra.objeto.valorfipe}" 
+                             id="txtValorFipe" size="10" maxlength="10" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Preço de Compra" for="txtPrecoCompra"/>
+                <p:inputText value="#{controleCompra.objeto.precocompra}" 
+                             id="txtPrecoCompra" size="10" maxlength="10" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Custo de Despachante" for="txtCustoDesp"/>
+                <p:inputText value="#{controleCompra.objeto.custodesp}" 
+                             id="txtCustoDesp" size="10" maxlength="10" placeholder="Obrigatório"/>
+
+                <p:outputLabel value="Negociador" for="selectNegociador"/>
+                <p:selectOneMenu value="#{controleCompra.objeto.negociador}"
+                                 id="selectNegociador">
+                    <f:converter converterId="converterNegociador"/>
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleCompra.daoNegociador.listarTodos}"
+                                   var="neg" itemLabel="#{neg.nome}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Carro" for="selectCarro"/>
+                <p:selectOneMenu value="#{controleCompra.objeto.carro}"
+                                 id="selectCarro">
+                    <f:converter converterId="converterCarro"/>
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleCompra.daoCarro.listarTodosCompraveis}"
+                                   var="car" itemLabel="#{car.placa}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Cliente" for="selectCliente"/>
+                <p:selectOneMenu value="#{controleCompra.objeto.cliente}" 
+                                 id="selectCliente">
+                    <f:converter converterId="converterCliente"/>
+                    <f:selectItem noSelectionOption="true" itemValue="#{null}"
+                                  itemLabel="Selecione um registro"/>
+                    <f:selectItems value="#{controleCompra.daoCliente.listarTodos}" 
+                                   var="cli" itemLabel="#{cli.nome}"/>
+                </p:selectOneMenu>                
+
+                <f:facet name="footer">
+                    <div align="center">
+                        <p:commandButton value="Cancelar"
+                                         action="#{controleCompra.cancelar()}"
+                                         ajax="false"
+                                         immediate="true"/>
+                        <p:commandButton value="Salvar"
+                                         action="#{controleCompra.salvar()}"
+                                         ajax="false"/>
+                    </div>
+                </f:facet>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
