@@ -25,22 +25,22 @@
                 </p:column>
                 <p:column headerText="Data da Compra">
                     <p:outputLabel value="#{obj.datacompra}">
-                        <f:converter id="converterCalendar"/>
+                        <f:converter converterId="converterCalendar"/>
                     </p:outputLabel>
                 </p:column>
                 <p:column headerText="Valor FIPE">
                     <p:outputLabel value="#{obj.valorfipe}">
-                        <f:convertNumber pattern="R$ #0.00" />
+                        <f:convertNumber pattern="R$ 0.00" />
                     </p:outputLabel>
                 </p:column>
                 <p:column headerText="Preço de Compra">
                     <p:outputLabel value="#{obj.precocompra}">
-                        <f:convertNumber pattern="R$ #0.00" />
+                        <f:convertNumber pattern="R$ 0.00" />
                     </p:outputLabel>
                 </p:column>
                 <p:column headerText="Custo de Despachantes">
                     <p:outputLabel value="#{obj.custodesp}">
-                        <f:convertNumber pattern="R$ #0.00" />
+                        <f:convertNumber pattern="R$ 0.00" />
                     </p:outputLabel>
                 </p:column>
 
@@ -59,7 +59,7 @@
                                      action="#{controleCompra.editar(obj.crv)}"
                                      ajax="false"/>
                     <p:commandButton icon="ui-icon-trash"
-                                     action="#{controleServico.excluir(obj.crv)}"
+                                     action="#{controleCompra.excluir(obj.crv)}"
                                      update="@form" process="@form"
                                      onclick="if (!confirm('Confirma a exclusão do objeto?'))
                                                  return false"/>

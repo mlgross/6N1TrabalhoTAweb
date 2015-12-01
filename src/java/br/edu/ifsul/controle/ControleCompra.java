@@ -16,12 +16,12 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author mlgross 
+ * @author mlgross
  */
 @ManagedBean(name = "controleCompra")
 @SessionScoped
-public class ControleCompra implements Serializable{
-    
+public class ControleCompra implements Serializable {
+
     @EJB
     private CompraDAO dao;
     private Compra objeto;
@@ -37,8 +37,8 @@ public class ControleCompra implements Serializable{
 
     public ControleCompra() {
     }
-    
-        public String listar() {
+
+    public String listar() {
         return "/privado/compra/listar?faces-redirect=true";
     }
 
@@ -54,7 +54,7 @@ public class ControleCompra implements Serializable{
 
     public String salvar() {
         try {
-            if (objeto.getCrv()== null) {
+            if (objeto.getCrv() == null) {
                 dao.persist(objeto);
             } else {
                 dao.merge(objeto);
@@ -77,14 +77,17 @@ public class ControleCompra implements Serializable{
         }
     }
 
-    public void excluir(Integer crv) {
+    public String excluir(Integer crv) {
         try {
-            objeto = dao.getObjectById(crv);
-            dao.remove(objeto);
+            System.out.println(crv);
+            Compra compra = dao.getEm().find(Compra.class, crv);
+            System.out.println(compra.getCrv());
+            dao.remove(compra);
             Util.mensagemInformacao("Objeto removido com sucesso");
         } catch (Exception e) {
             Util.mensagemErro("Erro ao remover objeto:" + Util.getMensagemErro(e));
         }
+        return "listar";
     }
 
     public CompraDAO getDao() {
@@ -151,5 +154,4 @@ public class ControleCompra implements Serializable{
         this.cliente = cliente;
     }
 
-    
 }

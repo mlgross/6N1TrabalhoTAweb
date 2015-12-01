@@ -30,7 +30,7 @@ public class ConverterNegociador implements Converter, Serializable{
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
         if (o == null) {
-            return null;
+            return "";
         }
         Negociador obj = (Negociador) o;
         return obj.getPis().toString();

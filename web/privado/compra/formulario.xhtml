@@ -17,12 +17,14 @@
                 </f:facet>
 
                 <p:outputLabel value="CRV" for="txtCrv"/>
-                <p:inputText id="txtCrv" size="10" readonly="true" 
+                <p:inputText id="txtCrv" size="10" maxlength="9" 
                              value="#{controleCompra.objeto.crv}"/>
 
                 <p:outputLabel value="Data da Compra" for="txtDataCompra"/>
                 <p:inputMask id="txtDataCompra" mask="99/99/9999"
-                             value="#{controleCompra.objeto.datacompra}"/>
+                             value="#{controleCompra.objeto.datacompra}">
+                    <f:converter converterId="converterCalendar"/>
+                </p:inputMask>
 
                 <p:outputLabel value="Valor FIPE" for="txtValorFipe"/>
                 <p:inputText value="#{controleCompra.objeto.valorfipe}" 

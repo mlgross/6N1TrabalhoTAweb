@@ -30,7 +30,7 @@ public class ConverterCliente implements Converter, Serializable {
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object o) {
         if (o == null){
-            return null;
+            return "";
         }
         Cliente obj = (Cliente) o;
         return obj.getCpf();  
